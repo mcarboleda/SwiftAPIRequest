@@ -45,12 +45,10 @@ class SelectPersonVC: UIViewController {
                 self.hair.text = person.hair_color
                 self.birthdate.text = person.birth_year
                 self.gender.text = person.gender
-                
-                
             }
         }
         
     }
 
 }
-
+sige po, akapin mo nalang yong gamit mo para safe mamaya may pumasok taz kunin habang d pa umaalis bus hehe 

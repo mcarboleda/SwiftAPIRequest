@@ -20,6 +20,10 @@ class SelectPersonVC: UIViewController {
     @IBOutlet weak var birthdate: UILabel!
     @IBOutlet weak var gender: UILabel!
     
+    @IBOutlet weak var homeworldBtn: UIButton!
+    @IBOutlet weak var vihecleBtn: UIButton!
+    @IBOutlet weak var spaceshipBtn: UIButton!
+    @IBOutlet weak var fildBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +51,23 @@ class SelectPersonVC: UIViewController {
         }
         
     }
-
+    @IBAction func homeworldClick(_ sender: Any) {
+        print("click")
+        
+    }
+    @IBAction func vehicleClick(_ sender: Any) {
+        print("click")
+        
+    }
+    
+    @IBAction func spaceshipClick(_ sender: Any) {
+        print("click")
+        
+    }
+    @IBAction func filmClick(_ sender: Any) {
+        print("click")
+        
+    }
 }
 
 

@@ -191,6 +191,75 @@
                                     <action selector="randomClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="byJ-y7-Wsu"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uE-zL-wBd" customClass="BlackBgView" customModule="StarTrivia" customModuleProvider="target">
+                                <rect key="frame" x="23" y="547" width="329" height="80"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="a2H-LL-wmP">
+                                        <rect key="frame" x="20" y="15" width="289" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYw-Vj-G5Z">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="Hn4-dt-WTZ"/>
+                                                    <constraint firstAttribute="width" constant="50" id="e2y-Ds-aca"/>
+                                                    <constraint firstAttribute="height" constant="50" id="g7h-6c-baH"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="hW3-l8-15a"/>
+                                                </constraints>
+                                                <state key="normal" image="homeworldicon"/>
+                                                <connections>
+                                                    <action selector="homeworldClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ova-xF-CPU"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7c-jD-FN5">
+                                                <rect key="frame" x="79.666666666666671" y="0.0" width="50.000000000000014" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="ODD-Mw-RII"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="kVY-KH-QGw"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="n4u-no-Yqh"/>
+                                                    <constraint firstAttribute="height" constant="50" id="uQ6-tO-kej"/>
+                                                </constraints>
+                                                <state key="normal" image="vehicles"/>
+                                                <connections>
+                                                    <action selector="vehicleClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UDr-JL-U4P"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-E2-SJ1">
+                                                <rect key="frame" x="159.33333333333334" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="NXv-el-gxX"/>
+                                                    <constraint firstAttribute="height" constant="50" id="P7V-vN-Bnt"/>
+                                                    <constraint firstAttribute="width" constant="50" id="cf4-UI-pkD"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="sM5-vA-93g"/>
+                                                </constraints>
+                                                <state key="normal" image="starships"/>
+                                                <connections>
+                                                    <action selector="spaceshipClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cSv-Eu-qir"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFt-Sj-7oF">
+                                                <rect key="frame" x="239" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="EQ1-hj-HTb"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="JXU-xl-ycg"/>
+                                                    <constraint firstAttribute="width" constant="50" id="btA-g6-5VD"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="cGo-eG-rGE"/>
+                                                </constraints>
+                                                <state key="normal" image="films"/>
+                                                <connections>
+                                                    <action selector="filmClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BwR-KL-O9L"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.71421104753521125" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="a2H-LL-wmP" secondAttribute="trailing" constant="20" id="1iK-QN-Ofj"/>
+                                    <constraint firstAttribute="height" constant="80" id="Bda-h5-UpT"/>
+                                    <constraint firstItem="a2H-LL-wmP" firstAttribute="centerY" secondItem="3uE-zL-wBd" secondAttribute="centerY" id="PtT-su-vh6"/>
+                                    <constraint firstItem="a2H-LL-wmP" firstAttribute="leading" secondItem="3uE-zL-wBd" secondAttribute="leading" constant="20" id="R6f-KP-yz7"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -199,6 +268,7 @@
                             <constraint firstItem="UCQ-0P-BCa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="F4e-d3-fga"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Sc-DR-tqW" secondAttribute="trailing" constant="20" id="Fp8-QM-6dH"/>
                             <constraint firstItem="LSU-i1-fsg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Mmp-JE-5hf"/>
+                            <constraint firstItem="3uE-zL-wBd" firstAttribute="top" secondItem="UCQ-0P-BCa" secondAttribute="bottom" constant="14" id="NVe-ts-0GX"/>
                             <constraint firstItem="UCQ-0P-BCa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="W2Z-iH-Vho"/>
                             <constraint firstItem="xUj-Fa-scy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Yh2-Ne-ySE"/>
                             <constraint firstItem="UCQ-0P-BCa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26" id="ZgM-QC-1rJ"/>
@@ -207,8 +277,10 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Sc-DR-tqW" secondAttribute="trailing" constant="20" id="hVV-7d-R9U"/>
                             <constraint firstItem="0Sc-DR-tqW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ilY-Tv-Ecj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xUj-Fa-scy" secondAttribute="bottom" constant="20" id="l8i-Sn-Fh8"/>
+                            <constraint firstItem="3uE-zL-wBd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mXu-F7-oBf"/>
                             <constraint firstItem="UCQ-0P-BCa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26" id="ogV-j4-7JQ"/>
                             <constraint firstItem="LSU-i1-fsg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="r9M-aQ-8Ye"/>
+                            <constraint firstItem="3uE-zL-wBd" firstAttribute="width" secondItem="UCQ-0P-BCa" secondAttribute="width" id="s7d-gb-3AK"/>
                             <constraint firstItem="0Sc-DR-tqW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xEc-C5-ee2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -216,11 +288,15 @@
                     <navigationItem key="navigationItem" id="KVh-gI-pAl"/>
                     <connections>
                         <outlet property="birthdate" destination="zYi-ix-6pK" id="dR3-EA-Bmb"/>
+                        <outlet property="fildBtn" destination="PFt-Sj-7oF" id="o1J-oa-G3k"/>
                         <outlet property="gender" destination="m0P-MG-XdN" id="3cV-L6-9oC"/>
                         <outlet property="hair" destination="5PG-Cw-bDX" id="tLD-7j-aMd"/>
                         <outlet property="height" destination="eXg-O4-kEq" id="Phf-pq-bkQ"/>
+                        <outlet property="homeworldBtn" destination="aYw-Vj-G5Z" id="i26-lx-hF4"/>
                         <outlet property="mass" destination="ex4-QH-kRF" id="FtW-IT-kIG"/>
                         <outlet property="nameLbl" destination="nvS-db-OWu" id="eGK-2E-LbE"/>
+                        <outlet property="spaceshipBtn" destination="dmc-E2-SJ1" id="sys-gL-Psq"/>
+                        <outlet property="vihecleBtn" destination="G7c-jD-FN5" id="AcC-a9-ht1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -247,6 +323,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="films" width="50" height="50"/>
+        <image name="homeworldicon" width="50" height="50"/>
         <image name="space1" width="699" height="1120"/>
+        <image name="starships" width="50" height="50"/>
+        <image name="vehicles" width="50" height="50"/>
     </resources>
 </document>

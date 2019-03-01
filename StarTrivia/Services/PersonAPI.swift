@@ -8,11 +8,31 @@
 
 import Foundation
 import Alamofire
-
+import SwiftyJSON
 
 class PersonAPI {
     
     func getRandomPersonAlamofire(id: Int, completion: @escaping PersonResponseCompletion) {
+
+        guard let getPersonURL =  URL(string: "\(PERSON_URL)\(id)") else {return }
+
+        AF.request(getPersonURL).responseJSON { (response) in
+            if let error = response.result.error {
+                debugPrint(error.localizedDescription)
+                completion(nil)
+                return
+            }
+
+            guard let json = response.result.value as? [String: Any] else { return completion(nil)}
+
+            let person = self.parsePersonManual(json: json)
+            DispatchQueue.main.async {
+                completion(person)
+            }
+        }
+    }
+    
+    func getRandomPersonAlamofireSwiftyJson(id: Int, completion: @escaping PersonResponseCompletion) {
         
         guard let getPersonURL =  URL(string: "\(PERSON_URL)\(id)") else {return }
         
@@ -23,15 +43,25 @@ class PersonAPI {
                 return
             }
             
-            guard let json = response.result.value as? [String: Any] else { return completion(nil)}
-        
-            let person = self.parsePersonManual(json: json)
-            DispatchQueue.main.async {
-                completion(person)
+            guard let data = response.data else { return completion(nil)}
+            do{
+                let json = try JSON(data: data)
+                DispatchQueue.main.async {
+                    let person = self.parsePersonSwiftyJson(json: json)
+                    completion(person)
+                }
+            }catch{
+                debugPrint(error.localizedDescription)
+                completion(nil)
             }
+            
+            
+          
         }
         
     }
+    
+    
     
     func getRandomPersonURLSession(id: Int, completion: @escaping PersonResponseCompletion)  {
         
@@ -67,7 +97,30 @@ class PersonAPI {
         task.resume()
         
     }
-//     -> Person
+    
+    
+    
+    //     -> Parsing json using SwiftyJson
+    private func parsePersonSwiftyJson(json: JSON) -> Person{
+        let name =  json["name"].stringValue
+        let height = json["height"].stringValue
+        let mass = json["mass"].stringValue
+        let hair_color = json["hair_color"].stringValue
+        let skin_color = json["skin_color"].stringValue
+        let eye_color = json["eye_color"].stringValue
+        let birth_year = json["birth_year"].stringValue
+        let gender = json["gender"].stringValue
+        let homeworld = json["homeworld"].stringValue
+        let films = json["films"].arrayValue.map({$0.stringValue})
+        let species = json["species"].arrayValue.map({$0.stringValue})
+        let vehicles = json["vehicles"].arrayValue.map({$0.stringValue})
+        let starships = json["starships"].arrayValue.map({$0.stringValue})
+        
+        return Person(name: name, height: height, mass: mass, hair_color: hair_color, skin_color: skin_color, eye_color: eye_color, birth_year: birth_year, gender: gender,homeworld: homeworld, films: films, species: species, vehicles: vehicles, starships: starships )
+        
+    }
+    
+//     -> Parsing json using manual method
     private func parsePersonManual(json: [String: Any] ) -> Person{
         let name =  json["name"] as? String ?? ""
         let height = json["height"] as? String ?? ""

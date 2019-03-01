@@ -35,7 +35,7 @@ class SelectPersonVC: UIViewController {
     func generateRandomData(){
         let ramdon = Int.random(in: 1 ... 87)
         
-        api.getRandomPersonAlamofire(id: ramdon) { (Person) in
+        api.getRandomPersonAlamofireSwiftyJson(id: ramdon) { (Person) in
             if let person = Person{
                 print("sdfsdf"+person.name)
                 

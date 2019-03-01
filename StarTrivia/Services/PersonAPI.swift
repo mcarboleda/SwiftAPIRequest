@@ -7,9 +7,31 @@
 //
 
 import Foundation
+import Alamofire
 
 
 class PersonAPI {
+    
+    func getRandomPersonAlamofire(id: Int, completion: @escaping PersonResponseCompletion) {
+        
+        guard let getPersonURL =  URL(string: "\(PERSON_URL)\(id)") else {return }
+        
+        AF.request(getPersonURL).responseJSON { (response) in
+            if let error = response.result.error {
+                debugPrint(error.localizedDescription)
+                completion(nil)
+                return
+            }
+            
+            guard let json = response.result.value as? [String: Any] else { return completion(nil)}
+        
+            let person = self.parsePersonManual(json: json)
+            DispatchQueue.main.async {
+                completion(person)
+            }
+        }
+        
+    }
     
     func getRandomPersonURLSession(id: Int, completion: @escaping PersonResponseCompletion)  {
         

@@ -35,7 +35,7 @@ class SelectPersonVC: UIViewController {
     func generateRandomData(){
         let ramdon = Int.random(in: 1 ... 87)
         
-        api.getRandomPersonURLSession(id: ramdon) { (Person) in
+        api.getRandomPersonAlamofire(id: ramdon) { (Person) in
             if let person = Person{
                 print("sdfsdf"+person.name)
                 
@@ -51,4 +51,6 @@ class SelectPersonVC: UIViewController {
     }
 
 }
-sige po, akapin mo nalang yong gamit mo para safe mamaya may pumasok taz kunin habang d pa umaalis bus hehe 
+
+
+

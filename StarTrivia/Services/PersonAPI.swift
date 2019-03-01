@@ -12,26 +12,33 @@ import SwiftyJSON
 
 class PersonAPI {
     
-    func getRandomPersonAlamofire(id: Int, completion: @escaping PersonResponseCompletion) {
-
+    //     -> API request using Alamofire, SwiftyJSON with Codable Object
+    func getRandomPersonAlamofireSwiftyJsonCodable(id: Int, completion: @escaping PersonResponseCompletion) {
+        
         guard let getPersonURL =  URL(string: "\(PERSON_URL)\(id)") else {return }
-
+        
         AF.request(getPersonURL).responseJSON { (response) in
             if let error = response.result.error {
                 debugPrint(error.localizedDescription)
                 completion(nil)
                 return
             }
-
-            guard let json = response.result.value as? [String: Any] else { return completion(nil)}
-
-            let person = self.parsePersonManual(json: json)
-            DispatchQueue.main.async {
-                completion(person)
+            
+            guard let data = response.data else { return completion(nil)}
+            let jsonDecoder = JSONDecoder()
+            do{
+                let person = try jsonDecoder.decode(Person.self, from: data)
+                DispatchQueue.main.async {
+                    completion(person)
+                }
+            }catch{
+                debugPrint(error.localizedDescription)
+                completion(nil)
             }
         }
     }
-    
+
+    //     -> API request using Alamofire and SwiftyJSON
     func getRandomPersonAlamofireSwiftyJson(id: Int, completion: @escaping PersonResponseCompletion) {
         
         guard let getPersonURL =  URL(string: "\(PERSON_URL)\(id)") else {return }
@@ -54,15 +61,34 @@ class PersonAPI {
                 debugPrint(error.localizedDescription)
                 completion(nil)
             }
-            
-            
-          
         }
-        
+    }
+
+    //     -> API request using Alamofire
+    func getRandomPersonAlamofire(id: Int, completion: @escaping PersonResponseCompletion) {
+
+        guard let getPersonURL =  URL(string: "\(PERSON_URL)\(id)") else {return }
+
+        AF.request(getPersonURL).responseJSON { (response) in
+            if let error = response.result.error {
+                debugPrint(error.localizedDescription)
+                completion(nil)
+                return
+            }
+
+            guard let json = response.result.value as? [String: Any] else { return completion(nil)}
+
+            let person = self.parsePersonManual(json: json)
+            DispatchQueue.main.async {
+                completion(person)
+            }
+        }
     }
     
     
     
+    
+    //     -> API request using URLSession
     func getRandomPersonURLSession(id: Int, completion: @escaping PersonResponseCompletion)  {
         
         guard let getPersonURL =  URL(string: "\(PERSON_URL)\(id)") else {return }
@@ -116,7 +142,7 @@ class PersonAPI {
         let vehicles = json["vehicles"].arrayValue.map({$0.stringValue})
         let starships = json["starships"].arrayValue.map({$0.stringValue})
         
-        return Person(name: name, height: height, mass: mass, hair_color: hair_color, skin_color: skin_color, eye_color: eye_color, birth_year: birth_year, gender: gender,homeworld: homeworld, films: films, species: species, vehicles: vehicles, starships: starships )
+        return Person(name: name, height: height, mass: mass, hair_color: hair_color, skin_color: skin_color, eye_color: eye_color, birth_year: birth_year, gender: gender,homeworldurl: homeworld, films: films, species: species, vehicles: vehicles, starships: starships )
         
     }
     
@@ -136,7 +162,7 @@ class PersonAPI {
         let vehicles = json["vehicles"]  as? [String] ??  [String]()
         let starships = json["starships"]  as? [String] ??  [String]()
         
-        return Person(name: name, height: height, mass: mass, hair_color: hair_color, skin_color: skin_color, eye_color: eye_color, birth_year: birth_year, gender: gender,homeworld: homeworld, films: films, species: species, vehicles: vehicles, starships: starships )
+        return Person(name: name, height: height, mass: mass, hair_color: hair_color, skin_color: skin_color, eye_color: eye_color, birth_year: birth_year, gender: gender,homeworldurl: homeworld, films: films, species: species, vehicles: vehicles, starships: starships )
         
     }
     

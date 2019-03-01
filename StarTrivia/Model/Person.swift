@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct Person {
+struct Person : Codable {
     let name: String
     let height: String
     let mass: String
@@ -18,10 +18,25 @@ struct Person {
     let eye_color: String
     let birth_year: String
     let gender: String
-    let homeworld: String
+    let homeworldurl: String
     let films: [String]
     let species: [String]
     let vehicles: [String]
     let starships: [String]
     
+    enum CodingKeys: String, CodingKey {
+        case name
+        case height
+        case mass
+        case hair_color
+        case skin_color
+        case eye_color
+        case birth_year
+        case gender
+        case homeworldurl = "homeworld"
+        case films
+        case species
+        case vehicles
+        case starships
+    }
 }

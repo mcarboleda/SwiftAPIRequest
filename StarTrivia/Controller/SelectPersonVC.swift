@@ -11,6 +11,7 @@ import UIKit
 class SelectPersonVC: UIViewController {
     
     var  api = PersonAPI()
+    var person: Person!
     
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var height: UILabel!
@@ -26,12 +27,10 @@ class SelectPersonVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         generateRandomData()
     }
 
-    
-    @IBAction func randomClick(_ sender: Any) {
+    @IBAction func randomPersonClick(_ sender: Any) {
         generateRandomData()
     }
     
@@ -41,10 +40,47 @@ class SelectPersonVC: UIViewController {
         api.getRandomPersonAlamofireSwiftyJsonCodable(id: ramdon) { (Person) in
             if let person = Person{
                 self.setupView(person: person)
+                self.person =  person
             }
         }
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if var destination =  segue.destination as? PersonProtocol {
+            destination.person = person
+        }
+        
+// Long process
+//        switch segue.identifier {
+//        case Segue.homeworld.rawValue:
+//            if let destination = segue.destination as? HomeworldVCViewController {
+//                destination.person = person
+//            }
+//        case Segue.vehicle.rawValue:
+//            if let destination = segue.destination as? VehicleVC {
+//                destination.person = person
+//            }
+//        case Segue.starship.rawValue:
+//            if let destination = segue.destination as? StarshipVC {
+//                destination.person = person
+//            }
+//        case Segue.films.rawValue:
+//            if let destination = segue.destination as? FilmVC {
+//                destination.person = person
+//            }
+//        default:
+//            break
+//        }
+    }
+    
+//    enum Segue: String {
+//        case homeworld = "toHomeworld"
+//        case vehicle = "toVehicle"
+//        case starship = "toStarship"
+//        case films = "toFilms"
+//    }
 
     func setupView(person: Person){
         self.nameLbl.text = person.name
@@ -59,26 +95,8 @@ class SelectPersonVC: UIViewController {
         spaceshipBtn.isEnabled = !person.starships.isEmpty
         fildBtn.isEnabled = !person.films.isEmpty
     }
-    
-    @IBAction func homeworldClick(_ sender: Any) {
-        print("click")
-        
-    }
-    
-    @IBAction func vehicleClick(_ sender: Any) {
-        print("click")
-        
-    }
-    
-    @IBAction func spaceshipClick(_ sender: Any) {
-        print("click")
-        
-    }
-    @IBAction func filmClick(_ sender: Any) {
-        print("click")
-        
-    }
 }
 
-
-
+protocol PersonProtocol {
+    var person: Person! {get set}
+}

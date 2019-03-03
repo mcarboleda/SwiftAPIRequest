@@ -8,11 +8,13 @@
 
 import UIKit
 
-class VehicleVC: UIViewController {
-
+class VehicleVC: UIViewController, PersonProtocol  {
+    
+    var person : Person!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("Person" + person.name)
         // Do any additional setup after loading the view.
     }
     

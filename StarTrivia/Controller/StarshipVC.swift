@@ -8,11 +8,13 @@
 
 import UIKit
 
-class StarshipVC: UIViewController {
+class StarshipVC: UIViewController, PersonProtocol  {
 
+    var person : Person!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("Person" + person.name)
         // Do any additional setup after loading the view.
     }
     
